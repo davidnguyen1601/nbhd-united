@@ -1,0 +1,75 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/frontend"
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 10
+    # @tiptap packages MUST bump together — they peer-depend on one shared
+    # version, so individual bumps land a mixed 3.27/3.28 tree that npm ci
+    # ERESOLVEs on, reddening frontend CI and jamming ALL deploys. This bit us
+    # twice (2026-06-04 #788-792, 2026-07-16 #1223-1229, the latter via
+    # auto-merge landing 5 separate bumps). Grouping = one PR that keeps them
+    # consistent.
+    # Security updates need a mirror group because Dependabot separates them.
+    groups:
+      tiptap:
+        applies-to: version-updates
+        patterns:
+          - "@tiptap/*"
+      tiptap-security:
+        applies-to: security-updates
+        patterns:
+          - "@tiptap/*"
+      react:
+        applies-to: version-updates
+        patterns:
+          - "react"
+          - "react-dom"
+          - "@types/react"
+          - "@types/react-dom"
+      react-security:
+        applies-to: security-updates
+        patterns:
+          - "react"
+          - "react-dom"
+          - "@types/react"
+          - "@types/react-dom"
+    ignore:
+      - dependency-name: "next"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "tailwindcss"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "eslint"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "eslint-config-next"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "react"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "react-dom"
+        update-types: ["version-update:semver-major"]
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 10
+    ignore:
+      # transformers majors lag a release behind upstream PII model checkpoints
+      # we depend on (lakshyakh93/deberta_finetuned_pii); pin majors so a
+      # coordinated model + library bump is the only path through. Minor +
+      # patch bumps within 5.x have repeatedly broken prod imports —
+      # PR #447 (5.7→5.8), PR #652 (5.8→5.9), the model swap in #695 — so
+      # keep those off the table too.
+      - dependency-name: "transformers"
+        update-types: ["version-update:semver-major", "version-update:semver-minor", "version-update:semver-patch"]
+      # azure-storage-file-share / azure-core: the file-share 12.24
+      # + azure-core 1.39 + requests 2.32 triplet currently leaks the
+      # ``overwrite=True`` kwarg into ``requests.Session.request`` on
+      # the upload_file path. Pin majors until we know which triplet
+      # actually works end-to-end.
+      - dependency-name: "azure-storage-file-share"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "azure-core"
+        update-types: ["version-update:semver-major"]
