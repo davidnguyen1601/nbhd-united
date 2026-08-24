@@ -185,7 +185,7 @@ google-auth[requests]==2.56.1
     # via google-genai
 google-genai==2.18.1
     # via -r requirements.in
-gunicorn==26.0.0
+gunicorn==26.1.0
     # via -r requirements.in
 h11==0.16.0
     # via httpcore
@@ -342,7 +342,6 @@ openai==2.54.0
 packaging==26.0
     # via
     #   build
-    #   gunicorn
     #   huggingface-hub
     #   matplotlib
     #   spacy
