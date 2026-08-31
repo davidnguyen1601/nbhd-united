@@ -105,7 +105,7 @@ click==8.3.1
     #   typer
 cloudpathlib==0.23.0
     # via weasel
-composio==0.20.0
+composio==0.21.0
     # via -r requirements.in
 composio-client==1.43.0
     # via composio
@@ -459,6 +459,7 @@ regex==2026.2.28
 requests==2.32.5
     # via
     #   azure-core
+    #   composio
     #   google-auth
     #   google-genai
     #   msal
@@ -577,6 +578,7 @@ typing-inspection==0.4.2
 urllib3==2.6.3
     # via
     #   botocore
+    #   composio
     #   requests
     #   sentry-sdk
 wasabi==1.1.3
