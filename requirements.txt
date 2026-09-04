@@ -379,9 +379,9 @@ propcache==0.4.1
     # via
     #   aiohttp
     #   yarl
-psycopg[binary]==3.3.4
+psycopg[binary]==3.3.5
     # via -r requirements.in
-psycopg-binary==3.3.4
+psycopg-binary==3.3.5
     # via psycopg
 pyasn1==0.6.3
     # via pyasn1-modules
