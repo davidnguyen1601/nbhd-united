@@ -1,6 +1,6 @@
 # Core
 Django>=6.1.1,<6.2
-djangorestframework>=3.18.0
+djangorestframework>=3.18.1
 django-cors-headers
 django-environ
 psycopg[binary]
