@@ -1,18 +1,20 @@
-# Infrastructure — Terraform
+# Infrastructure
 
-Terraform modules for Azure infrastructure:
+This directory is a **placeholder**. Production Azure resources (Container Apps Environment, Key Vault, ACR, Azure Files, managed identities, networking) are **hand-managed** today — not provisioned from Terraform in this repo.
 
-- Container Apps Environment
-- Azure Key Vault
-- Azure Container Registry
-- Azure Files (tenant workspaces)
-- Managed Identities
-- Networking / VNet
+Authoritative deployment notes:
 
-## TODO
+- [`docs/reference/infrastructure-and-deployment.md`](../docs/reference/infrastructure-and-deployment.md)
+- [`docs/agents/workflow.md`](../docs/agents/workflow.md) (deploy / PR rules)
 
-- [ ] Container Apps Environment module
+## Future IaC (not implemented)
+
+If/when Terraform modules land here, candidates include:
+
+- [ ] Container Apps Environment
 - [ ] Key Vault with RBAC conditions
-- [ ] ACR for OpenClaw container image
+- [ ] ACR for OpenClaw / Django images
 - [ ] Azure Files for persistent workspaces
 - [ ] Monitoring / Log Analytics
+
+Until then, treat empty checklists below this line as aspirational — do not assume `infra/` applies changes to cloud.
