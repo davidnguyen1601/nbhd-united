@@ -22,6 +22,10 @@ staticfiles/
 
 # Environment
 .env
+.env.*
+!.env.example
+frontend/.env.local
+frontend/.env*.local
 
 # IDE
 .vscode/
@@ -30,18 +34,27 @@ staticfiles/
 *.swo
 *~
 
+# Secrets / certs (never commit)
+*.pem
+*.key
+!.github/**/*.pem
+
 # Next.js
 frontend/out/
 frontend/.next/
+frontend/node_modules/
 
 # OS
 .DS_Store
 Thumbs.db
 
-# Coverage
+# Coverage / test caches
 htmlcov/
 .coverage
 .coverage.*
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
 
 # MCP config (may contain project refs)
 .mcp.json
