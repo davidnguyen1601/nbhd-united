@@ -18,8 +18,7 @@ qstash>=2.0
 dj-stripe>=2.11.0
 stripe
 
-# Telegram
-python-telegram-bot>=22.8
+# Telegram (all Bot API calls use raw httpx — see apps/router/poller.py)
 qrcode[pil]
 
 # AI / LLM
