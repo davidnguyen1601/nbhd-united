@@ -20,8 +20,8 @@ Skills available as slash commands on this machine: `/deploy` (commit→push→v
 
 ## Tech stack
 
-- **Backend**: Django 6 + DRF, Python 3.12 (local venv 3.11 — pins can lag CI), QStash for ALL scheduling (never Celery), PostgreSQL 16 via Supabase us-west-1
-- **Frontend**: Next.js 14 static export (`out/`, no SSR), TypeScript, Tailwind, TipTap editor
+- **Backend**: Django 6.1 + DRF, Python 3.12 (local venv may lag CI), QStash for ALL scheduling (never Celery), PostgreSQL 16 via Supabase us-west-1
+- **Frontend**: Next.js 16 static export (`out/`, no SSR), TypeScript, Tailwind, TipTap editor
 - **Infra**: Azure Container Apps (`rg-nbhd-prod`), Key Vault `kv-nbhd-prod`, ACR `nbhdunited.azurecr.io`, Static Web Apps
 - **Billing**: Stripe via dj-stripe · **Messaging**: Telegram Bot API, LINE Messaging API
 - **AI runtime**: OpenClaw (separate image, `Dockerfile.openclaw`), LiteLLM/OpenRouter for models
@@ -34,7 +34,7 @@ Django control plane (nbhd-django-westus2)     Per-tenant: oc-<prefix> container
   └── QStash crons                             Frontend: Azure Static Web App
 ```
 
-Django apps: `actions agents automations billing byo_models common core cron dashboard finance friends fuel insights integrations journal lessons orchestrator pii platform_logs router telegram_bot tenants`.
+Django apps (see `INSTALLED_APPS`): `tenants billing yardtalk orchestrator router transcripts integrations journal automations dashboard cron platform_logs lessons actions finance fuel core byo_models insights friends common pii crypto evals steward`.
 
 ## Key commands
 
